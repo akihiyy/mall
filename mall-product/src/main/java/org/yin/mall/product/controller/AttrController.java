@@ -3,12 +3,11 @@ package org.yin.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.yin.mall.product.entity.AttrEntity;
 import org.yin.mall.product.service.AttrService;
@@ -16,25 +15,27 @@ import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.R;
 
 
-
 /**
  * 商品属性
  *
  * @author tty
  * @email tantangyin@gmail.com
- * @date 2021-07-16 14:08:29
+ * @date 2021-07-17 09:32:05
  */
 @RestController
+@AllArgsConstructor
+@Api(tags = "product接口")
 @RequestMapping("product/attr")
 public class AttrController {
-    @Autowired
-    private AttrService attrService;
+
+    private final  AttrService attrService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    @GetMapping
+    @ApiOperation(" 列表显示")
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = attrService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -44,9 +45,10 @@ public class AttrController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{attrId}")
-    public R info(@PathVariable("attrId") Long attrId){
-		AttrEntity attr = attrService.getById(attrId);
+    @GetMapping("/{attrId}")
+    @ApiOperation("信息显示")
+    public R info(@PathVariable("attrId") Long attrId) {
+            AttrEntity attr = attrService.getById(attrId);
 
         return R.ok().put("attr", attr);
     }
@@ -54,9 +56,10 @@ public class AttrController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
+    @PostMapping
+    @ApiOperation("添加")
+    public R save(@RequestBody AttrEntity attr) {
+            attrService.save(attr);
 
         return R.ok();
     }
@@ -64,9 +67,10 @@ public class AttrController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    public R update(@RequestBody AttrEntity attr){
-		attrService.updateById(attr);
+    @PutMapping
+    @ApiOperation("修改")
+    public R update(@RequestBody AttrEntity attr) {
+            attrService.updateById(attr);
 
         return R.ok();
     }
@@ -74,9 +78,10 @@ public class AttrController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] attrIds){
-		attrService.removeByIds(Arrays.asList(attrIds));
+    @DeleteMapping
+    @ApiOperation("根据id删除")
+    public R delete(@RequestBody Long[] attrIds) {
+            attrService.removeByIds(Arrays.asList(attrIds));
 
         return R.ok();
     }

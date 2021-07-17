@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.ProductAttrValueDao;
+import org.yin.mall.product.mapper.ProductAttrValueMapper;
 import org.yin.mall.product.entity.ProductAttrValueEntity;
 import org.yin.mall.product.service.ProductAttrValueService;
 
 
 @Service("productAttrValueService")
-public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao, ProductAttrValueEntity> implements ProductAttrValueService {
+public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueMapper, ProductAttrValueEntity> implements ProductAttrValueService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

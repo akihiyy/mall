@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.CategoryBrandRelationDao;
+import org.yin.mall.product.mapper.CategoryBrandRelationMapper;
 import org.yin.mall.product.entity.CategoryBrandRelationEntity;
 import org.yin.mall.product.service.CategoryBrandRelationService;
 
 
 @Service("categoryBrandRelationService")
-public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity> implements CategoryBrandRelationService {
+public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationMapper, CategoryBrandRelationEntity> implements CategoryBrandRelationService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.SpuInfoDescDao;
+import org.yin.mall.product.mapper.SpuInfoDescMapper;
 import org.yin.mall.product.entity.SpuInfoDescEntity;
 import org.yin.mall.product.service.SpuInfoDescService;
 
 
 @Service("spuInfoDescService")
-public class SpuInfoDescServiceImpl extends ServiceImpl<SpuInfoDescDao, SpuInfoDescEntity> implements SpuInfoDescService {
+public class SpuInfoDescServiceImpl extends ServiceImpl<SpuInfoDescMapper, SpuInfoDescEntity> implements SpuInfoDescService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

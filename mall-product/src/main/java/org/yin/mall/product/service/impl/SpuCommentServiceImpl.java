@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.SpuCommentDao;
+import org.yin.mall.product.mapper.SpuCommentMapper;
 import org.yin.mall.product.entity.SpuCommentEntity;
 import org.yin.mall.product.service.SpuCommentService;
 
 
 @Service("spuCommentService")
-public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentDao, SpuCommentEntity> implements SpuCommentService {
+public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentMapper, SpuCommentEntity> implements SpuCommentService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

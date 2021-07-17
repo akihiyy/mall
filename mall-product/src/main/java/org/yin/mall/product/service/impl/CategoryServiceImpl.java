@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.CategoryDao;
+import org.yin.mall.product.mapper.CategoryMapper;
 import org.yin.mall.product.entity.CategoryEntity;
 import org.yin.mall.product.service.CategoryService;
 
 
 @Service("categoryService")
-public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEntity> implements CategoryService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

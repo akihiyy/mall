@@ -3,12 +3,11 @@ package org.yin.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.yin.mall.product.entity.SkuInfoEntity;
 import org.yin.mall.product.service.SkuInfoService;
@@ -16,25 +15,27 @@ import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.R;
 
 
-
 /**
  * sku信息
  *
  * @author tty
  * @email tantangyin@gmail.com
- * @date 2021-07-16 14:08:29
+ * @date 2021-07-17 09:32:05
  */
 @RestController
+@AllArgsConstructor
+@Api(tags = "product接口")
 @RequestMapping("product/skuinfo")
 public class SkuInfoController {
-    @Autowired
-    private SkuInfoService skuInfoService;
+
+    private final  SkuInfoService skuInfoService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    @GetMapping
+    @ApiOperation(" 列表显示")
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = skuInfoService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -44,9 +45,10 @@ public class SkuInfoController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{skuId}")
-    public R info(@PathVariable("skuId") Long skuId){
-		SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
+    @GetMapping("/{skuId}")
+    @ApiOperation("信息显示")
+    public R info(@PathVariable("skuId") Long skuId) {
+            SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
 
         return R.ok().put("skuInfo", skuInfo);
     }
@@ -54,9 +56,10 @@ public class SkuInfoController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    public R save(@RequestBody SkuInfoEntity skuInfo){
-		skuInfoService.save(skuInfo);
+    @PostMapping
+    @ApiOperation("添加")
+    public R save(@RequestBody SkuInfoEntity skuInfo) {
+            skuInfoService.save(skuInfo);
 
         return R.ok();
     }
@@ -64,9 +67,10 @@ public class SkuInfoController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    public R update(@RequestBody SkuInfoEntity skuInfo){
-		skuInfoService.updateById(skuInfo);
+    @PutMapping
+    @ApiOperation("修改")
+    public R update(@RequestBody SkuInfoEntity skuInfo) {
+            skuInfoService.updateById(skuInfo);
 
         return R.ok();
     }
@@ -74,9 +78,10 @@ public class SkuInfoController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] skuIds){
-		skuInfoService.removeByIds(Arrays.asList(skuIds));
+    @DeleteMapping
+    @ApiOperation("根据id删除")
+    public R delete(@RequestBody Long[] skuIds) {
+            skuInfoService.removeByIds(Arrays.asList(skuIds));
 
         return R.ok();
     }

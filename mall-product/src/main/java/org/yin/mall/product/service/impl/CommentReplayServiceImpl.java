@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.CommentReplayDao;
+import org.yin.mall.product.mapper.CommentReplayMapper;
 import org.yin.mall.product.entity.CommentReplayEntity;
 import org.yin.mall.product.service.CommentReplayService;
 
 
 @Service("commentReplayService")
-public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayDao, CommentReplayEntity> implements CommentReplayService {
+public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayMapper, CommentReplayEntity> implements CommentReplayService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

@@ -1,20 +1,16 @@
 package org.yin.mall.product.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import org.yin.mall.product.entity.AttrAttrgroupRelationEntity;
-import org.yin.mall.product.service.AttrAttrgroupRelationService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.R;
+import org.yin.mall.product.entity.AttrAttrgroupRelationEntity;
+import org.yin.mall.product.service.AttrAttrgroupRelationService;
 
+import java.util.Arrays;
+import java.util.Map;
 
 
 /**
@@ -22,19 +18,22 @@ import org.yin.mall.common.utils.R;
  *
  * @author tty
  * @email tantangyin@gmail.com
- * @date 2021-07-16 14:08:29
+ * @date 2021-07-17 09:32:05
  */
 @RestController
+@AllArgsConstructor
+@Api(tags = "product接口")
 @RequestMapping("product/attrattrgrouprelation")
 public class AttrAttrgroupRelationController {
-    @Autowired
-    private AttrAttrgroupRelationService attrAttrgroupRelationService;
+
+    private final  AttrAttrgroupRelationService attrAttrgroupRelationService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    @GetMapping
+    @ApiOperation(" 列表显示")
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -44,9 +43,10 @@ public class AttrAttrgroupRelationController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Long id){
-		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
+    @GetMapping("/{id}")
+    @ApiOperation("信息显示")
+    public R info(@PathVariable("id") Long id) {
+            AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
         return R.ok().put("attrAttrgroupRelation", attrAttrgroupRelation);
     }
@@ -54,9 +54,10 @@ public class AttrAttrgroupRelationController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
-		attrAttrgroupRelationService.save(attrAttrgroupRelation);
+    @PostMapping
+    @ApiOperation("添加")
+    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation) {
+            attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
         return R.ok();
     }
@@ -64,9 +65,10 @@ public class AttrAttrgroupRelationController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
-		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
+    @PutMapping
+    @ApiOperation("修改")
+    public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation) {
+            attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
         return R.ok();
     }
@@ -74,9 +76,10 @@ public class AttrAttrgroupRelationController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] ids){
-		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
+    @DeleteMapping
+    @ApiOperation("根据id删除")
+    public R delete(@RequestBody Long[] ids) {
+            attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

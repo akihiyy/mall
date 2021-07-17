@@ -1,4 +1,4 @@
-package org.yin.mall.product.dao;
+package org.yin.mall.product.mapper;
 
 import org.yin.mall.product.entity.AttrGroupEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -9,9 +9,9 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author tty
  * @email tantangyin@gmail.com
- * @date 2021-07-16 14:08:29
+ * @date 2021-07-17 09:19:09
  */
 @Mapper
-public interface AttrGroupDao extends BaseMapper<AttrGroupEntity> {
+public interface AttrGroupMapper extends BaseMapper<AttrGroupEntity> {
 	
 }

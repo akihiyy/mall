@@ -1,4 +1,4 @@
-package org.yin.mal.common.utils;
+package org.yin.mall.common.utils;
 
 import java.util.HashMap;
 import java.util.Map;

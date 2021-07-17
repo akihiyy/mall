@@ -8,13 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.common.utils.Query;
 
-import org.yin.mall.product.dao.SpuImagesDao;
+import org.yin.mall.product.mapper.SpuImagesMapper;
 import org.yin.mall.product.entity.SpuImagesEntity;
 import org.yin.mall.product.service.SpuImagesService;
 
 
 @Service("spuImagesService")
-public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesDao, SpuImagesEntity> implements SpuImagesService {
+public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesMapper, SpuImagesEntity> implements SpuImagesService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
