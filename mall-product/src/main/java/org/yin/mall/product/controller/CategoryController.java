@@ -28,7 +28,13 @@ import org.yin.mall.common.utils.R;
 @RequestMapping("product/category")
 public class CategoryController {
 
-    private final  CategoryService categoryService;
+    private final CategoryService categoryService;
+
+    @GetMapping("/tree")
+    @ApiOperation("树节点")
+    public R tree() {
+        return R.ok().put("data", categoryService.selectTree());
+    }
 
     /**
      * 列表
@@ -48,7 +54,7 @@ public class CategoryController {
     @GetMapping("/{catId}")
     @ApiOperation("信息显示")
     public R info(@PathVariable("catId") Long catId) {
-            CategoryEntity category = categoryService.getById(catId);
+        CategoryEntity category = categoryService.getById(catId);
 
         return R.ok().put("category", category);
     }
@@ -59,7 +65,7 @@ public class CategoryController {
     @PostMapping
     @ApiOperation("添加")
     public R save(@RequestBody CategoryEntity category) {
-            categoryService.save(category);
+        categoryService.save(category);
 
         return R.ok();
     }
@@ -70,7 +76,7 @@ public class CategoryController {
     @PutMapping
     @ApiOperation("修改")
     public R update(@RequestBody CategoryEntity category) {
-            categoryService.updateById(category);
+        categoryService.updateById(category);
 
         return R.ok();
     }
@@ -81,7 +87,7 @@ public class CategoryController {
     @DeleteMapping
     @ApiOperation("根据id删除")
     public R delete(@RequestBody Long[] catIds) {
-            categoryService.removeByIds(Arrays.asList(catIds));
+        categoryService.removeByIds(Arrays.asList(catIds));
 
         return R.ok();
     }

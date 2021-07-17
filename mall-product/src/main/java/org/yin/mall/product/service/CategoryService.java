@@ -3,7 +3,9 @@ package org.yin.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.yin.mall.common.utils.PageUtils;
 import org.yin.mall.product.entity.CategoryEntity;
+import org.yin.mall.product.entity.dto.CategoryEntityDto;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +17,18 @@ import java.util.Map;
  */
 public interface CategoryService extends IService<CategoryEntity> {
 
+    /**
+     * 分页查询
+     * @param params
+     * @return
+     */
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 生成树节点
+     * @return
+     */
+    List<CategoryEntityDto> selectTree();
+
 }
 
